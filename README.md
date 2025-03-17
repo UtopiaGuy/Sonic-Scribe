@@ -1,6 +1,6 @@
 # VR Application for Audio Transcription and Analysis
 
-This application transcribes audio files using OpenAI's Whisper API, analyzes the transcription using GPT-4o to categorize the content, and sends the categorized data to a Notion database.
+This application transcribes audio files using OpenAI's Whisper API, analyzes the transcription using GPT-4o to categorize the content, and sends the categorized data to a Notion database,and makes a Latex file locally as well.
 
 ## Compiling the Application
 
