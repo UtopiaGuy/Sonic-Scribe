@@ -1,0 +1,24 @@
+# Ignore configuration files with sensitive information
+config.cpp
+.env
+
+# Ignore build artifacts
+*.o
+*.obj
+*.exe
+*.out
+app
+vr_app
+
+# Ignore IDE and editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore dependency directories
+node_modules/

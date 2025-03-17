@@ -1,0 +1,18 @@
+/**
+ * Configuration Implementation File - EXAMPLE
+ * 
+ * This is an example file showing the format for config.cpp.
+ * Copy this file to config.cpp and replace the placeholder values with your actual API keys.
+ * DO NOT COMMIT config.cpp TO VERSION CONTROL.
+ */
+
+#include "config.h"
+
+// OpenAI API Key
+const std::string OPENAI_API_KEY = "your-openai-api-key";
+
+// Notion API Key
+const std::string NOTION_API_KEY = "your-notion-api-key";
+
+// Notion Database ID
+const std::string NOTION_DATABASE_ID = "your-notion-database-id";
