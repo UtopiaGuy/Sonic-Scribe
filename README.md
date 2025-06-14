@@ -7,7 +7,7 @@ This application transcribes audio files using OpenAI's Whisper API, analyzes th
 To compile the application, use the following command:
 
 ```bash
-g++ -std=c++17 -o vr_app C++_VR_App.cpp config.cpp -lcurl
+g++ -std=c++17 -o vr_app C++_VR_App.cpp transcription.cpp analysis.cpp notion.cpp config.cpp -lcurl
 ```
 
 This command compiles both the main application file and the configuration file, and links against the curl library.
