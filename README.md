@@ -1,106 +1,54 @@
-# VR Application for Audio Transcription and Analysis
+# Sonic Scribe
 
-This application transcribes audio files using OpenAI's Whisper API, analyzes the transcription using GPT-4o to categorize the content, and sends the categorized data to a Notion database,and makes a Latex file locally as well.
+Sonic Scribe is a web-based application for transcribing and analyzing audio files. It uses OpenAI's Whisper API for transcription, GPT-4o for analysis, and can send the results to a Notion database.
 
-## Compiling the Application
+## Architecture
 
-To compile the application, use the following command:
+The application is composed of three main parts:
 
-```bash
-g++ -std=c++17 -o vr_app C++_VR_App.cpp config.cpp -lcurl
-```
+*   **Frontend:** A React application that provides the user interface for uploading audio files and viewing transcriptions.
+*   **Backend:** A Node.js server that handles file uploads, interacts with the OpenAI API, and communicates with the Notion API.
+*   **C++ Application:** A command-line tool for audio transcription and analysis.
 
-This command compiles both the main application file and the configuration file, and links against the curl library.
+## Getting Started
 
-To run the application:
+The easiest way to run the application is with Docker Compose.
 
-```bash
-./vr_app
-```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/UtopiaGuy/Sonic-Scribe.git
+    cd Sonic-Scribe
+    ```
 
-## API Keys Configuration
+2.  **Set up your environment variables:**
+    Create a `.env` file in the root of the project and add your API keys. You can use the `.env.example` file as a template.
+    ```
+    OPENAI_API_KEY=your-openai-api-key
+    NOTION_API_KEY=your-notion-api-key
+    NOTION_DATABASE_ID=your-notion-database-id
+    ```
 
-For security purposes, all API keys are stored in separate configuration files that are not committed to version control:
+3.  **Run the application:**
+    ```bash
+    docker-compose up --build
+    ```
 
-- For C++: `config.cpp` contains the API keys used by the main application
-- For JavaScript: `.env` file contains environment variables for the Node.js scripts
+The frontend will be available at `http://localhost:3000` and the backend at `http://localhost:3001`.
 
-### Setting Up API Keys
+## Configuration
 
-1. **For C++ Application**:
-   - Create a copy of `config.cpp.example` (if it exists) or create a new file named `config.cpp`
-   - Add your API keys to the file following this format:
-   ```cpp
-   #include "config.h"
-   
-   const std::string OPENAI_API_KEY = "your-openai-api-key";
-   const std::string NOTION_API_KEY = "your-notion-api-key";
-   const std::string NOTION_DATABASE_ID = "your-notion-database-id";
-   ```
+### API Keys
 
-2. **For JavaScript Scripts**:
-   - Create a copy of `.env.example` (if it exists) or create a new file named `.env`
-   - Add your API keys to the file following this format:
-   ```
-   OPENAI_API_KEY=your-openai-api-key
-   NOTION_API_KEY=your-notion-api-key
-   NOTION_DATABASE_ID=your-notion-database-id
-   ```
+The application requires API keys for OpenAI and Notion. These are stored in a `.env` file in the root of the project. See the "Getting Started" section for more details.
 
-3. **Install Required Node.js Packages**:
-   - For the JavaScript scripts to use environment variables, install the dotenv package:
-   ```bash
-   npm install dotenv
-   ```
+### C++ Configuration
 
-## Notion JSON Adapter
+The C++ application uses a `config.h` file for configuration. An example file, `config.h.example`, is provided. To use the C++ application, you will need to create your own `config.h` file.
 
-This tool helps format JSON data to be compatible with your Notion database by filtering out properties that don't exist in your Notion database.
+## Notion Integration
 
-## Problem Solved
+The application can send transcription and analysis data to a Notion database. The `notion_adapter.js` script is used to format the data to be compatible with your Notion database.
 
-When sending data to Notion via the API, you might encounter errors like:
+## C++ Application
 
-```
-Notion API error: AI_Cost is not a property that exists. AI_Title is not a property that exists. Action_Items is not a property that exists...
-```
-
-This happens when your JSON contains properties that don't exist in your Notion database. This tool filters out those properties and keeps only the ones that Notion accepts.
-
-## Usage
-
-```bash
-# Basic usage - read from a file, output to console
-./notion_adapter.js data.json
-
-# Save output to a file
-./notion_adapter.js data.json -o notion_ready.json
-
-# Read from stdin (pipe)
-cat data.json | ./notion_adapter.js
-
-# Show help
-./notion_adapter.js --help
-```
-
-## Property Mapping
-
-The tool maps properties as follows:
-
-| Original Property | Notion Property |
-|-------------------|----------------|
-| AI_Title          | Title          |
-| Type              | Type           |
-| Icon              | Icon           |
-| Summary           | Summary        |
-| References        | References     |
-| Stories           | Stories        |
-| Arguments         | Arguments      |
-| Sentiment         | Sentiment      |
-| Duration          | Duration       |
-
-Properties that don't exist in your Notion database (like AI_Cost, Action_Items, Duration_Seconds, Follow-up_Questions, Main_Points) are removed.
-
-## Customization
-
-If your Notion database has different properties, you can modify the `notionCompatibleData` object in the script to match your database structure.
+The `C++_VR_App.cpp` file contains a command-line application for audio transcription and analysis. To compile and run this application, see the instructions in the old README.md file (which can be found in the git history).
