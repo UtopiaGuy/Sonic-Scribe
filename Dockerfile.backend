@@ -1,0 +1,27 @@
+# Use the official Node.js image
+FROM node:18
+
+# Install C++ dependencies
+RUN apt-get update && apt-get install -y \
+    g++ \
+    make \
+    cmake \
+    libcurl4-openssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create and change to the app directory
+WORKDIR /usr/src/app
+
+# Copy all source code
+COPY . .
+
+# Compile the C++ application and move it to a system path
+RUN g++ -std=c++17 -o C++_VR_App C++_VR_App.cpp -lcurl
+RUN mv C++_VR_App /usr/local/bin/
+RUN chmod +x /usr/local/bin/C++_VR_App
+
+# Install Node.js dependencies for the backend
+RUN npm install --prefix web
+
+# Run the web service on container startup
+CMD [ "node", "web/server.js" ]

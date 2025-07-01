@@ -914,9 +914,14 @@ bool saveLatexToFile(const string &latex, const string &filePath) {
     cout << "LaTeX saved to: " << filePath << endl;
     return true;
 }
-int main() {
-    cout << "Select an audio file for transcription." << endl;
-    string filePath = getFileFromDialog();
+int main(int argc, char* argv[]) {
+    string filePath;
+    if (argc > 1) {
+        filePath = argv[1];
+    } else {
+        cout << "Select an audio file for transcription." << endl;
+        filePath = getFileFromDialog();
+    }
     
     // Use the API key from the config file
     string apiKey = OPENAI_API_KEY;
