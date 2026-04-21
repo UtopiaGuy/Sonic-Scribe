@@ -1,25 +1,15 @@
-# Ignore configuration files with sensitive information
-config.cpp
-.env
-
-# Ignore build artifacts
-*.o
-*.obj
-*.exe
-*.out
-app
-vr_app
-
-# Ignore IDE and editor files
-.vscode/
-.idea/
-*.swp
-*~
-
-# Ignore OS-specific files
-.DS_Store
-Thumbs.db
-
-# Ignore dependency directories
 node_modules/
-config.h
+.env
+.env.*
+!.env.example
+.DS_Store
+uploads/
+data/
+backend/whisper/
+*.mp3
+*.wav
+*.m4a
+*.ogg
+*.webm
+testUpload.js
+PYTHON.PY
