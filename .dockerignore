@@ -1,0 +1,12 @@
+node_modules
+.git
+_archive
+*.mp3
+*.wav
+*.m4a
+*.ogg
+*.webm
+uploads/
+data/
+.env*
+!.env.example

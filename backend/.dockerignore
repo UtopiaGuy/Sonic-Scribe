@@ -1,0 +1,8 @@
+node_modules
+whisper/
+.git
+*.mp3
+*.wav
+*.m4a
+*.ogg
+*.webm

@@ -146,7 +146,7 @@ It's a 1% improvement. And over time, these little improvements add up and sudde
 
 ## Meta
 
-- Sentiment: positive
-- Transcription Cost: $0.045
-- Chat API Cost: $0.006
-- Total Cost: $0.051
+- Analysis Engine: Local Gemma 4 E4B
+- Transcription Engine: Whisper (base.en)
+- Data Compliance: Zero-Knowledge Privacy (100% Local Processing)
+- Processing Time: 12.4s

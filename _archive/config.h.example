@@ -1,0 +1,10 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#include <string>
+
+const std::string OPENAI_API_KEY = "YOUR_OPENAI_API_KEY";
+const std::string NOTION_API_KEY = "YOUR_NOTION_API_KEY";
+const std::string NOTION_DATABASE_ID = "YOUR_NOTION_DATABASE_ID";
+
+#endif // CONFIG_H
